@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://img.freepik.com/free-photo/newspaper-background-concept_23-2149501597.jpg');
+        
+             
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-box {
+            background-color: gray;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 40vw;
+            height: auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #2c3e50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            text-align: left;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        textarea {
+            resize: none;
+            padding: 12px;
+            border: 2px solid black;
+            border-radius: 20px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2c80b4;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f4faff;
+            border-left: 4px solid #3498db;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .name {
+            margin-left: 25vw;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-box">
+
+        <h1>📰 News Detector</h1>
+
+        <form action="{{ url_for('predict_news')}}" method="post">
+            <label for="news">Enter your news text:</label>
+            <textarea id="news" name="news" rows="5" placeholder="Devloped by Aayush..."
+                required>{{ user_input if user_input else '' }}</textarea>
+            <button type="submit">PREDICT</button>
+        </form>
+        
+
+        <div class="result-box">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
